@@ -59,6 +59,9 @@ solve_button.addEventListener('click', () => {
                 grid[i][j] = 0;
                 input_grid[i][j].style.background = "";
             } else {
+                if (check(input_grid[i][j].value) == false) {
+                    valid = false;
+                }
                 if (ok(i, j, Number(input_grid[i][j].value)) == false) {
                     valid = false;
                 }
@@ -85,6 +88,15 @@ reset_button.addEventListener('click', () => {
     }
     found = false;
 });
+
+function check(s) {
+    switch (s) {
+        case '1': case '2': case '3': case '4': case '5':
+        case '6': case '7': case '8': case '9':
+            return true;
+        default: return false;
+    }
+}
 
 function ok(y, x, k) {
     for (var i = 0; i < 9; i++) {
